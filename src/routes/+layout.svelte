@@ -20,6 +20,10 @@
 	}
 </script>
 
+<svelte:head>
+	<link rel="stylesheet" href="/app.css" />
+</svelte:head>
+
 <button class="theme-toggle" on:click={toggleTheme}>
 	{#if theme === 'light'}
 		🌙
