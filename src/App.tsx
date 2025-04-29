@@ -1,4 +1,4 @@
-import { BrowserRouter as Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import ShortUrlRedirect from './pages/ShortUrlRedirect'
