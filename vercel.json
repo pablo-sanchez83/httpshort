@@ -5,11 +5,19 @@
             "src": "package.json",
             "use": "@vercel/static-build",
             "config": {
-                "distDir": "build"
+                "distDir": "build",
+                "buildCommand": "pnpm run build"
             }
         }
     ],
     "routes": [
+        {
+            "src": "/_app/immutable/(.*)",
+            "headers": {
+                "cache-control": "public, max-age=31536000, immutable"
+            },
+            "continue": true
+        },
         {
             "src": "/(.*)",
             "dest": "/index.html"

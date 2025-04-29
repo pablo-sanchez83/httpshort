@@ -10,7 +10,7 @@
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"vercel-build": "vite build"
+		"vercel-build": "NODE_ENV=production pnpm run build"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^6.0.0",
