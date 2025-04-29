@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Regla para la colección de URLs
+    match /urls/{document=**} {
+      // Permitir lectura pública (necesario para las redirecciones)
+      allow read: if true;
+      
+      // Permitir escritura solo si el usuario está autenticado
+      // Por ahora lo dejamos abierto para pruebas, pero deberías restringirlo
+      allow write: if true;
+      
+      // Límites de tamaño
+      match /{url} {
+        allow create: if request.resource.data.originalUrl.size() <= 2000
+          && request.resource.data.shortCode.size() <= 20
+          && request.resource.data.createdAt is timestamp
+          && request.resource.data.expiresAt is timestamp
+          && request.resource.data.expiresAt > request.resource.data.createdAt;
+      }
+    }
+  }
+} 
