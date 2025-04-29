@@ -14,14 +14,14 @@
 }
 
 [data-theme="dark"] {
-  --bg-primary: #000000;
-  --bg-secondary: #1a1a1a;
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
   --text-primary: #ffffff;
   --text-secondary: #e5e7eb;
   --accent-color: #f97316;
   --accent-hover: #ea580c;
   --border-color: #374151;
-  --input-bg: #1a1a1a;
+  --input-bg: #1f2937;
   --input-border: #4b5563;
   --error-color: #f87171;
   --success-color: #34d399;
@@ -50,11 +50,15 @@ body {
 /* Estilos para formularios */
 .form-group {
   margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 input[type="text"],
 input[type="url"] {
-  width: 100%;
+  flex: 1;
+  height: 3.5rem;
   padding: 0.75rem 1rem;
   border: 1px solid var(--input-border);
   border-radius: 0.5rem;
@@ -62,6 +66,7 @@ input[type="url"] {
   color: var(--text-primary);
   font-size: 1rem;
   transition: border-color 0.3s ease;
+  -webkit-appearance: none;
 }
 
 input[type="text"]:focus,
@@ -71,18 +76,25 @@ input[type="url"]:focus {
 }
 
 button {
+  height: 3.5rem;
   background-color: var(--accent-color);
   color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
+  padding: 0 2rem;
+  border: 1px solid transparent;
   border-radius: 0.5rem;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  -webkit-appearance: none;
 }
 
 button:hover {
   background-color: var(--accent-hover);
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 /* Estilos para tarjetas */
@@ -191,4 +203,4 @@ button:hover {
   content: "•";
   color: var(--accent-color);
   margin-right: 0.5rem;
-}
+} 
