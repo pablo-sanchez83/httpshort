@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import '../app.css';
+	import '../../static/app.css';
 
 	let theme = 'light';
 
@@ -21,7 +21,7 @@
 </script>
 
 <svelte:head>
-	<link rel="stylesheet" href="/app.css" />
+	<link rel="stylesheet" href="/static/app.css" />
 </svelte:head>
 
 <button class="theme-toggle" on:click={toggleTheme}>
