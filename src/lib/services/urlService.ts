@@ -1,8 +1,8 @@
 import { db } from '../firebase';
-import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, where, serverTimestamp } from 'firebase/firestore';
 import { canCreateUrl, incrementUsage } from './cookieService';
 
-export async function createShortUrl(originalUrl: string): Promise<string> {
+export const createShortUrl = async (originalUrl: string): Promise<string> => {
     try {
         if (!canCreateUrl()) {
             throw new Error('Has alcanzado el límite de URLs por día');
@@ -16,10 +16,10 @@ export async function createShortUrl(originalUrl: string): Promise<string> {
         expiresAt.setHours(expiresAt.getHours() + 24);
         
         // Guardar en Firestore
-        const docRef = await addDoc(collection(db, 'urls'), {
+        await addDoc(collection(db, 'urls'), {
             originalUrl,
             shortCode,
-            createdAt: new Date(),
+            createdAt: serverTimestamp(),
             expiresAt
         });
 
@@ -34,7 +34,7 @@ export async function createShortUrl(originalUrl: string): Promise<string> {
         console.error('Error al crear URL corta:', error);
         throw error;
     }
-}
+};
 
 function generateShortCode(): string {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

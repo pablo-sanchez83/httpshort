@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
@@ -11,4 +13,14 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app); 
+export const db = getFirestore(app);
+
+// @ts-ignore
+interface ImportMetaEnv {
+	VITE_FIREBASE_API_KEY: string;
+	VITE_FIREBASE_AUTH_DOMAIN: string;
+	VITE_FIREBASE_PROJECT_ID: string;
+	VITE_FIREBASE_STORAGE_BUCKET: string;
+	VITE_FIREBASE_MESSAGING_SENDER_ID: string;
+	VITE_FIREBASE_APP_ID: string;
+} 
